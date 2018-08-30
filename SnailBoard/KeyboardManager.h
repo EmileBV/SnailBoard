@@ -20,7 +20,7 @@ private:
 	void ScanMatrix();
 	void PressKeys();
 private:
-	Key* m_keys[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
+	//Key* m_keys[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
 	bool m_inputs[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
 	bool m_lastInputs[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
 	unsigned char m_rowPins[LAYOUT_ROW_COUNT];

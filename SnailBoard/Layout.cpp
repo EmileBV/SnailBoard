@@ -1,17 +1,20 @@
 #include "Layout.h"
 
-void Layout::Initialize(Key * layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT])
+Key* Layout::m_layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
+
+void Layout::Initialize(/*Key * layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT]*/)
 {
 	for (unsigned char row = 0; row < LAYOUT_ROW_COUNT; row++)
 		for (unsigned char col = 0; col < LAYOUT_COL_COUNT; col++)
-			m_layout[row][col] = layout[row][col];
+		{
+			KeyNormal k(KEY_SPACE);
+			m_layout[row][col] = &k;
+		}
 
-	m_isInBase = false;
 }
 
 void Layout::GetBaseLayout()
 {
-	m_isInBase = true;
 
 	//LEFT
 	KeyNormal k0_0(KEY_TAB); m_layout[0][0] = &k0_0;
@@ -35,11 +38,11 @@ void Layout::GetBaseLayout()
 	KeyNormal k2_4(KEY_V); m_layout[2][4] = &k2_4;
 	KeyNormal k2_5(KEY_B); m_layout[2][5] = &k2_5;
 
-	KeyNormal k3_0(KEY_SPACE); m_layout[3][0] = &k3_0;
+	KeyNormal k3_0(KEY_LEFT_GUI); m_layout[3][0] = &k3_0;
 	KeyNormal k3_1(KEY_LEFT_CTRL); m_layout[3][1] = &k3_1;
 	KeyNormal k3_2(KEY_LEFT_ALT); m_layout[3][2] = &k3_2;
-	KeyNormal k3_3(KEY_SPACE); m_layout[3][3] = &k3_3;
-	KeyNormal k3_4(KEY_SPACE); m_layout[3][4] = &k3_4;
+	KeyNormal k3_3(KEY_RIGHT_ALT); m_layout[3][3] = &k3_3;
+	KeyLayerModifier k3_4(1); m_layout[3][4] = &k3_4;
 	KeyNormal k3_5(KEY_SPACE); m_layout[3][5] = &k3_5;
 
 	//RIGHT
@@ -65,7 +68,7 @@ void Layout::GetBaseLayout()
 	KeyNormal k6_5(KEY_ENTER); m_layout[6][5] = &k6_5;
 
 	KeyNormal k7_0(KEY_SPACE); m_layout[7][0] = &k7_0;
-	KeyNormal k7_1(KEY_SPACE); m_layout[7][1] = &k7_1;
+	KeyLayerModifier k7_1(2); m_layout[7][1] = &k7_1;
 	KeyNormal k7_2(KEY_LEFT); m_layout[7][2] = &k7_2;
 	KeyNormal k7_3(KEY_DOWN);  m_layout[7][3] = &k7_3;
 	KeyNormal k7_4(KEY_UP); m_layout[7][4] = &k7_4;
@@ -73,14 +76,32 @@ void Layout::GetBaseLayout()
 
 }
 
+void Layout::GetLayer(unsigned char layerIndex)
+{
+	switch (layerIndex)
+	{
+	case 1:
+		GetLayer1();
+		break;
+	case 2:
+		GetLayer2();
+		break;
+	case 3:
+		GetLayer3();
+		break;
+	default:
+		break;
+	}
+}
+
 void Layout::GetLayer1()
 {
-	m_isInBase = false;
+	Keyboard.print("Layer 1");
 }
 
 void Layout::GetLayer2()
 {
-	m_isInBase = false;
+	Keyboard.print("Layer 2");
 }
 
 void Layout::GetLayer3()

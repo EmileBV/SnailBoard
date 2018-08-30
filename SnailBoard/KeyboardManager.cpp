@@ -17,7 +17,7 @@ KeyboardManager::KeyboardManager(unsigned char pRowPins[LAYOUT_ROW_COUNT], unsig
 		m_colPins[i] = pColPins[i];
 	}
 
-	Layout::Initialize(m_keys);
+	Layout::Initialize(/*m_keys*/);
 	Layout::GetBaseLayout();
 
 	for (unsigned char row = 0; row < LAYOUT_ROW_COUNT; row++)
@@ -74,18 +74,21 @@ void KeyboardManager::PressKeys()
 			if (m_inputs[row][col] && !m_lastInputs[row][col])
 			{
 				pressedCount++;
-				m_keys[row][col]->Press();
+				Layout::m_layout[row][col]->Press();
+				//m_keys[row][col]->Press();
 				//Serial.println("Pressed");
 			}
 			else if (m_inputs[row][col] && m_lastInputs[row][col])
 			{
-				m_keys[row][col]->Hold();
+				Layout::m_layout[row][col]->Hold();
+				//m_keys[row][col]->Hold();
 				//Serial.println("Held");
 			}
 			else if (!m_inputs[row][col] && m_lastInputs[row][col])
 			{
 				pressedCount--;
-				m_keys[row][col]->Release();
+				Layout::m_layout[row][col]->Release();
+				//m_keys[row][col]->Release();
 				//Serial.println("Released");
 			}
 
