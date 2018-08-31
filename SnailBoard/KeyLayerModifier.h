@@ -5,20 +5,20 @@
 #include "Key.h"
 #include "Keyboard.h"
 #include "ModifierManager.h"
-#include "Callback.h"
+#include "Layout.h"
 
 class KeyLayerModifier : public Key
 {
 public:
 	KeyLayerModifier();
-	KeyLayerModifier(Callback layout);
+	KeyLayerModifier(unsigned char layerIndex);
 	~KeyLayerModifier();
 	virtual void Press();
 	virtual void Hold();
 	virtual void Release();
 
 private:
-	Callback m_layout;
+	unsigned char m_layerIndex;
 };
 
 
