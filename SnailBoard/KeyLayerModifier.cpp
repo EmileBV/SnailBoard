@@ -23,4 +23,5 @@ void KeyLayerModifier::Hold()
 
 void KeyLayerModifier::Release()
 {
+	Layout::GetLayer(0);
 }

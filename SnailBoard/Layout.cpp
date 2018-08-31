@@ -79,6 +79,8 @@ void Layout::GetLayer(unsigned char layerIndex)
 {
 	switch (layerIndex)
 	{
+	case 0:
+		GetBaseLayout();
 	case 1:
 		GetLayer1();
 		break;
