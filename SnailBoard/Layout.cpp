@@ -2,7 +2,7 @@
 
 Key* Layout::m_layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT];
 
-void Layout::Initialize(/*Key * layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT]*/)
+void Layout::Initialize()
 {
 	for (unsigned char row = 0; row < LAYOUT_ROW_COUNT; row++)
 		for (unsigned char col = 0; col < LAYOUT_COL_COUNT; col++)
@@ -10,7 +10,6 @@ void Layout::Initialize(/*Key * layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT]*/)
 			KeyNormal k(KEY_SPACE);
 			m_layout[row][col] = &k;
 		}
-
 }
 
 void Layout::GetBaseLayout()
