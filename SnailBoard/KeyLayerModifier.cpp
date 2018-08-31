@@ -4,7 +4,7 @@ KeyLayerModifier::KeyLayerModifier()
 {
 }
 
-KeyLayerModifier::KeyLayerModifier(unsigned char layer) : m_layer(layer)
+KeyLayerModifier::KeyLayerModifier(Callback layout) : m_layout(layout)
 {
 }
 
@@ -14,7 +14,7 @@ KeyLayerModifier::~KeyLayerModifier()
 
 void KeyLayerModifier::Press()
 {
-	Layout::GetLayer(m_layer);
+	m_layout.CallFunction();
 }
 
 void KeyLayerModifier::Hold()

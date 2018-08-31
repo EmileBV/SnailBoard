@@ -13,7 +13,6 @@ class Layout
 public:
 	static void Initialize(/*Key* layout[LAYOUT_ROW_COUNT][LAYOUT_COL_COUNT]*/);
 	static void GetBaseLayout();
-	static void GetLayer(unsigned char layerIndex);
 	static void GetLayer1();
 	static void GetLayer2();
 	static void GetLayer3();

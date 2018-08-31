@@ -42,7 +42,7 @@ void Layout::GetBaseLayout()
 	KeyNormal k3_1(KEY_LEFT_CTRL); m_layout[3][1] = &k3_1;
 	KeyNormal k3_2(KEY_LEFT_ALT); m_layout[3][2] = &k3_2;
 	KeyNormal k3_3(KEY_RIGHT_ALT); m_layout[3][3] = &k3_3;
-	KeyLayerModifier k3_4(1); m_layout[3][4] = &k3_4;
+	KeyLayerModifier k3_4(GetLayer1); m_layout[3][4] = &k3_4;
 	KeyNormal k3_5(KEY_SPACE); m_layout[3][5] = &k3_5;
 
 	//RIGHT
@@ -68,7 +68,7 @@ void Layout::GetBaseLayout()
 	KeyNormal k6_5(KEY_ENTER); m_layout[6][5] = &k6_5;
 
 	KeyNormal k7_0(KEY_SPACE); m_layout[7][0] = &k7_0;
-	KeyLayerModifier k7_1(2); m_layout[7][1] = &k7_1;
+	KeyLayerModifier k7_1(GetLayer2); m_layout[7][1] = &k7_1;
 	KeyNormal k7_2(KEY_LEFT); m_layout[7][2] = &k7_2;
 	KeyNormal k7_3(KEY_DOWN);  m_layout[7][3] = &k7_3;
 	KeyNormal k7_4(KEY_UP); m_layout[7][4] = &k7_4;
@@ -76,46 +76,18 @@ void Layout::GetBaseLayout()
 
 }
 
-void Layout::GetLayer(unsigned char layerIndex)
-{
-	switch (layerIndex)
-	{
-	case 1:
-		GetLayer1();
-		break;
-	case 2:
-		GetLayer2();
-		break;
-	case 3:
-		GetLayer3();
-		break;
-	default:
-		break;
-	}
-}
-
 void Layout::GetLayer1()
 {
-	Keyboard.print("Layer 1");
+	Keyboard.press(KEY_1);
+	Keyboard.release(KEY_1);
 }
 
 void Layout::GetLayer2()
 {
-	Keyboard.print("Layer 2");
+	Keyboard.press(KEY_2);
+	Keyboard.release(KEY_2);
 }
 
 void Layout::GetLayer3()
 {
 }
-
-//Array2d<Key> Layout::GetLayout1()
-//{
-//}
-//
-//Array2d<Key> Layout::GetLayout2()
-//{
-//}
-//
-//Array2d<Key> Layout::GetLayout3()
-//{
-//}
